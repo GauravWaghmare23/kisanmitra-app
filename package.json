@@ -9,19 +9,37 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^7.9.0",
+    "appwrite": "^19.0.0",
+    "axios": "^1.11.0",
+    "bcryptjs": "^3.0.2",
+    "ethers": "^6.15.0",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.542.0",
+    "mongoose": "^8.18.0",
+    "next": "15.5.2",
+    "node-appwrite": "^18.0.0",
+    "qr-scanner": "^1.4.2",
+    "qrcode": "^1.5.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.2"
+    "react-hook-form": "^7.62.0",
+    "react-hot-toast": "^2.6.0",
+    "stripe": "^18.5.0",
+    "twilio": "^5.9.0"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^20.19.13",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

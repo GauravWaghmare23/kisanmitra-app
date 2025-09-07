@@ -1,0 +1,21 @@
+import { Client, Account, Databases, Storage } from 'appwrite';
+
+const client = new Client();
+
+client
+  .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!)
+  .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!);
+
+export const account = new Account(client);
+export const databases = new Databases(client);
+export const storage = new Storage(client);
+
+export const DATABASE_ID = 'crop-tracking';
+export const COLLECTIONS = {
+  USERS: 'users',
+  CROPS: 'crops',
+  JOURNEY: 'journey',
+  TRANSACTIONS: 'transactions',
+};
+
+export default client;
