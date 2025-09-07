@@ -15,13 +15,13 @@ export default function Home() {
           </p>
           <div className="flex gap-4 justify-center">
             <Link
-              href="/auth/LoginPage"
+              href="/auth/login"
               className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium transition"
             >
               Login
             </Link>
             <Link
-              href="/auth/RegisterPage"
+              href="/auth/register"
               className="bg-white hover:bg-gray-50 text-green-600 border border-green-600 px-8 py-3 rounded-lg font-medium transition"
             >
               Register
@@ -117,7 +117,7 @@ export default function Home() {
             Join thousands of farmers and businesses using our transparent crop tracking system.
           </p>
           <Link
-            href="/auth/RegisterPage"
+            href="/auth/register"
             className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium text-lg transition"
           >
             Create Your Account

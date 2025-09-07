@@ -105,6 +105,25 @@ export const blockchainService = {
     }
   },
 
+  async getCropJourney(cropId: string) {
+    try {
+      if (!contract) throw new Error('Contract not initialized');
+      
+      const result = await contract.getCropJourney(cropId);
+      return result.map((step: any) => ({
+        handler: step[0],
+        status: step[1],
+        location: step[2],
+        timestamp: step[3].toString(),
+        notes: step[4],
+        metadataHash: step[5],
+      }));
+    } catch (error) {
+      console.error('Blockchain getCropJourney error:', error);
+      throw error;
+    }
+  },
+
   async registerUser(role: 'farmer' | 'distributor' | 'retailer', walletAddress: string) {
     try {
       if (!contract) throw new Error('Contract not initialized');
@@ -139,3 +158,21 @@ export const blockchainService = {
         provider,
         signer,
       };
+    } catch (error) {
+      console.error('Connect wallet error:', error);
+      throw error;
+    }
+  },
+
+  // Utility function to check if blockchain is available
+  isAvailable() {
+    return !!contract;
+  },
+
+  // Get contract address
+  getContractAddress() {
+    return CONTRACT_ADDRESS;
+  },
+};
+
+export default blockchainService;

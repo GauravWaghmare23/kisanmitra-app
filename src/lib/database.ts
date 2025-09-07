@@ -1,5 +1,5 @@
-already haveapimport { databases, DATABASE_ID, COLLECTIONS } from './appwrite-server';
-import { User, Crop, JourneyStep, Transaction } from "../types/index"
+import { databases, DATABASE_ID, COLLECTIONS } from './appwrite-server';
+import { User, Crop, JourneyStep, Transaction } from '../types/index';
 import { ID, Query } from 'node-appwrite';
 
 export class DatabaseService {

@@ -57,13 +57,13 @@ export default function RootLayout({
 
               <div className="flex space-x-4">
                 <Link
-                  href="/auth/LoginPage"
+                  href="/auth/login"
                   className="text-green-600 hover:text-green-700 font-medium transition"
                 >
                   Login
                 </Link>
                 <Link
-                  href="/auth/RegisterPage"
+                  href="/auth/register"
                   className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition"
                 >
                   Register
