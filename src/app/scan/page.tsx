@@ -2,11 +2,22 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import QRScanner from '@/components/QRScanner';
 
 const ScanPage: React.FC = () => {
   const router = useRouter();
   const [manualInput, setManualInput] = useState('');
   const [isScanning, setIsScanning] = useState(false);
+
+  const handleQRScan = (data: string) => {
+    setIsScanning(false);
+    router.push(`/crop/${data}`);
+  };
+
+  const handleScanError = (error: string) => {
+    console.error('QR Scan error:', error);
+    setIsScanning(false);
+  };
 
   const handleManualSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,10 +28,6 @@ const ScanPage: React.FC = () => {
 
   const startScanning = () => {
     setIsScanning(true);
-    // In a real implementation, you would integrate with a QR scanner library
-    // For now, we'll show a placeholder
-    alert('QR Scanner would open here. For demo, use manual input below.');
-    setIsScanning(false);
   };
 
   return (
@@ -39,28 +46,24 @@ const ScanPage: React.FC = () => {
           {/* QR Scanner Section */}
           <div className="bg-white rounded-lg shadow-md p-8 mb-8">
             <div className="text-center">
-              <div className="w-64 h-64 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg mx-auto mb-6 flex items-center justify-center">
-                {isScanning ? (
-                  <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-                    <p className="text-gray-600">Scanning...</p>
-                  </div>
-                ) : (
-                  <div className="text-center">
-                    <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M12 12l3-3m-3 3l-3-3m-3 7h2.99M9 12H6m3 0l-3 3m3-3l3 3M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M12 12l3-3m-3 3l-3-3m-3 7h2.99M9 12H6m3 0l-3 3m3-3l3 3" />
-                    </svg>
-                    <p className="text-gray-500">Camera preview will appear here</p>
-                  </div>
-                )}
+              <div className="max-w-md mx-auto mb-6">
+                <QRScanner
+                  onScan={handleQRScan}
+                  onError={handleScanError}
+                  isActive={isScanning}
+                />
               </div>
 
               <button
-                onClick={startScanning}
+                onClick={() => setIsScanning(!isScanning)}
                 disabled={isScanning}
-                className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium transition disabled:opacity-50"
+                className={`px-8 py-3 rounded-lg font-medium transition ${
+                  isScanning
+                    ? 'bg-red-600 hover:bg-red-700 text-white'
+                    : 'bg-green-600 hover:bg-green-700 text-white'
+                }`}
               >
-                {isScanning ? 'Scanning...' : 'Start Camera Scan'}
+                {isScanning ? 'Stop Scanning' : 'Start Camera Scan'}
               </button>
             </div>
           </div>
